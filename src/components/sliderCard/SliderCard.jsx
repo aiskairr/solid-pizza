@@ -1,9 +1,9 @@
 import css from "./SliderCard.module.css"
 
-function SliderCard() {
+function SliderCard(props) {
   return (
     <div className={css.wrapper}>
-        <img src="https://cdn.loveandlemons.com/wp-content/uploads/2022/01/pizza-topping-ideas.jpg" alt="pizza" />
+        <img src={props.img} alt="pizza" />
     </div>
   )
 }
