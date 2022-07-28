@@ -49,14 +49,36 @@ function HomePage(props) {
     <div className="container page">
       <Slider {...settings}>
         {sliderCards.map((item) => (
-          <SliderCard img={item.img} />
+          <SliderCard key={item.id} img={item.img} />
         ))}
       </Slider>
       <h1 className="title">Пицца</h1>
+
       <div className="cards_wrapper">
         {props.pizzas.map((pizza) => (
-          <PizzaCard title={pizza.title} description={pizza.description} price={pizza.price} />
+          <PizzaCard
+            key={pizza.id}
+            title={pizza.title}
+            description={pizza.description}
+            price={pizza.price}
+          />
         ))}
+      </div>
+
+      <h2 className="title">Напитки</h2>
+
+      <div className="cards_wrapper">
+        {
+          props.drinks.map((drink) => (
+            <PizzaCard
+              key={drink.id}
+              img={drink.img}
+              title={drink.title}
+              description={drink.description}
+              price={drink.price}
+            />
+          ))
+        }
       </div>
     </div>
   );
