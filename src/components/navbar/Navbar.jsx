@@ -1,17 +1,19 @@
+import { useState } from "react";
 import BasketModal from "../basketModal/BasketModal";
 import css from "./Navbar.module.css"
 
 function Navbar() {
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const onBasketOpen = () => {
-    alert("sdfsdf")
+    setModalOpen(!isModalOpen)
   }
 
   return (
     <div className={`container ${css.wrapper}`}>
         <div>Пицца</div>
         <button onClick={onBasketOpen} className="btn">Корзина</button>
-        <BasketModal />
+        <BasketModal opened={isModalOpen} onBasketOpen={onBasketOpen} />
     </div>
   )
 }

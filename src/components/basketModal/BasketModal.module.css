@@ -1,5 +1,5 @@
 .wrapper {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 99;
@@ -10,11 +10,28 @@
     height: 100vh;
     width: calc(100vw - 430px);
     background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s linear;
 }
 
 .modal {
+    position: fixed;
+    right: -430px;
     color: red;
     width: 430px;
     height: 100vh;
     background: rgb(255, 255, 255);
+    transition: all 0.3s linear;
+}
+
+.active > .modal {
+  right: 0;  
+}
+
+.active > .darkBlock  {
+    opacity: 1;
+    visibility: visible;
 }

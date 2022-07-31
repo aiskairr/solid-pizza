@@ -17,14 +17,13 @@ function App() {
       fetch("https://605b21f027f0050017c063b9.mockapi.io/api/v3/drinks"),
     ]).then((res) => {
       console.log(res);
-      Promise.all( res.map((item) => item.json()) )
-      .then((data) => {
+      Promise.all(res.map((item) => item.json())).then((data) => {
         console.log(data);
-        setLoading(false)
-        setPizzas(data[0])
-        setDrinks(data[1])
-      })
-    })
+        setLoading(false);
+        setPizzas(data[0]);
+        setDrinks(data[1]);
+      });
+    });
   }, []);
 
   if (isLoading) {
