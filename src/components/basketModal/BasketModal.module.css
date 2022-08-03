@@ -20,7 +20,6 @@
 .modal {
     position: fixed;
     right: -430px;
-    color: red;
     width: 430px;
     height: 100vh;
     background: rgb(255, 255, 255);
@@ -34,4 +33,9 @@
 .active > .darkBlock  {
     opacity: 1;
     visibility: visible;
+}
+
+.emptyText {
+    text-align: center;
+    margin-top: 200px;
 }

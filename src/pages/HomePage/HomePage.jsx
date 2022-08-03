@@ -37,7 +37,7 @@ const sliderCards = [
   },
 ];
 
-function HomePage(props) {
+function HomePage({ addToBasket, drinks, pizzas }) {
   const settings = {
     dots: false,
     speed: 500,
@@ -55,12 +55,14 @@ function HomePage(props) {
       <h1 className="title">Пицца</h1>
 
       <div className="cards_wrapper">
-        {props.pizzas.map((pizza) => (
+        {pizzas.map((pizza) => (
           <PizzaCard
             key={pizza.id}
+            id={pizza.id}
             title={pizza.title}
             description={pizza.description}
             price={pizza.price}
+            addToBasket={addToBasket}
           />
         ))}
       </div>
@@ -68,17 +70,15 @@ function HomePage(props) {
       <h2 className="title">Напитки</h2>
 
       <div className="cards_wrapper">
-        {
-          props.drinks.map((drink) => (
-            <PizzaCard
-              key={drink.id}
-              img={drink.img}
-              title={drink.title}
-              description={drink.description}
-              price={drink.price}
-            />
-          ))
-        }
+        {drinks.map((drink) => (
+          <PizzaCard
+            key={drink.id}
+            img={drink.img}
+            title={drink.title}
+            description={drink.description}
+            price={drink.price}
+          />
+        ))}
       </div>
     </div>
   );

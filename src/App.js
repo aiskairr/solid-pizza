@@ -8,6 +8,19 @@ import { useEffect, useState } from "react";
 function App() {
   const [pizzas, setPizzas] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [basket, setBasket] = useState([]);
+
+  console.log(basket);
+
+  const addToBasket = (pizza) => {
+    // write code here
+    const isExist = basket.find((item) => item.id === pizza.id);
+    console.log(isExist);
+    
+    if(!isExist) {
+      setBasket([...basket, pizza]);
+    }
+  };
 
   const [isLoading, setLoading] = useState(true);
 
@@ -32,12 +45,18 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Navbar />
+      <Navbar basket={basket} />
 
       <Routes>
         <Route
           path="/"
-          element={<HomePage drinks={drinks} pizzas={pizzas} />}
+          element={
+            <HomePage
+              addToBasket={addToBasket}
+              drinks={drinks}
+              pizzas={pizzas}
+            />
+          }
         />
       </Routes>
     </div>
