@@ -1,7 +1,16 @@
 import css from "./PizzaCard.module.css";
 
-function PizzaCard({ addToBasket, title, description, price, img, id }) {
-  const handleClick =  () => addToBasket({ title, description, price, img, id })
+function PizzaCard({
+  addToBasket,
+  title,
+  description,
+  price,
+  img,
+  id,
+  isAdmin,
+}) {
+  const handleClick = () => addToBasket({ title, description, price, img, id });
+
   return (
     <div className={css.wrapper}>
       <div className={css.imageWrapper}>
@@ -17,10 +26,18 @@ function PizzaCard({ addToBasket, title, description, price, img, id }) {
       <div className={css.description}>{description}</div>
       <div className={css.footer}>
         <div className={css.price}>от {price} сом</div>
-        <button onClick={handleClick} className="btn">
-          Выброть
-        </button>
+        {!isAdmin && (
+          <button onClick={handleClick} className="btn">
+            Выброть
+          </button>
+        )}
       </div>
+      {isAdmin && (
+        <div>
+          <button className="btn">Delete</button>
+          <button className="btn">Change</button>
+        </div>
+      )}
     </div>
   );
 }

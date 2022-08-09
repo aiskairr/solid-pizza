@@ -39,3 +39,10 @@
     text-align: center;
     margin-top: 200px;
 }
+
+.header {
+    background: rgb(243, 243, 247);
+    padding: 25px 15px 15px 15px;
+    font-size: 24px;
+    font-weight: 500;
+}
