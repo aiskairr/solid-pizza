@@ -1,3 +1,4 @@
+import { base_url } from "../../constants/constants";
 import css from "./PizzaCard.module.css";
 
 function PizzaCard({
@@ -8,8 +9,19 @@ function PizzaCard({
   img,
   id,
   isAdmin,
+  link,
 }) {
   const handleClick = () => addToBasket({ title, description, price, img, id });
+
+  const handleDelete = () => {
+    fetch(`${base_url}${link}/${id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      alert("Successfuly deleted")
+      window.location.reload()
+    })
+  }
 
   return (
     <div className={css.wrapper}>
@@ -34,7 +46,7 @@ function PizzaCard({
       </div>
       {isAdmin && (
         <div>
-          <button className="btn">Delete</button>
+          <button onClick={handleDelete} className="btn">Delete</button>
           <button className="btn">Change</button>
         </div>
       )}

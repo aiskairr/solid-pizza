@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import { useEffect, useState } from "react";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import CreateNewElement from "./pages/CreateNewElement/CreateNewElement";
+import { base_url } from "./constants/constants";
 
 const local = JSON.parse(localStorage.getItem("basket"));
 function App() {
@@ -33,8 +34,8 @@ function App() {
 
   useEffect(() => {
     Promise.all([
-      fetch("https://605b21f027f0050017c063b9.mockapi.io/api/v3/pizza"),
-      fetch("https://605b21f027f0050017c063b9.mockapi.io/api/v3/drinks"),
+      fetch(base_url + "pizza"),
+      fetch(base_url + "drinks"),
     ]).then((res) => {
       console.log(res);
       Promise.all(res.map((item) => item.json())).then((data) => {
@@ -66,7 +67,7 @@ function App() {
           }
         />
 
-        <Route path="/admin" element={<AdminPage pizzas={pizzas} />} />
+        <Route path="/admin" element={<AdminPage pizzas={pizzas} drinks={drinks} />} />
         <Route path="/create-new-item" element={<CreateNewElement />} />
       </Routes>
     </div>

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { base_url } from "../../constants/constants";
 import css from "./CreateNewElement.module.css";
 
 function CreateNewElement() {
@@ -8,6 +10,8 @@ function CreateNewElement() {
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("pizza");
   const [isSending, setSending] = useState(false);
+
+  const navigate = useNavigate();
 
   console.log(status);
 
@@ -20,8 +24,8 @@ function CreateNewElement() {
       description,
       img: image,
     };
-    console.log(data);
-    fetch("https://605b21f027f0050017c063b9.mockapi.io/api/v3/" + status, {
+
+    fetch(base_url + status, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -33,7 +37,7 @@ function CreateNewElement() {
     })
     .then(()=> {
       // TODO: Автоматически должны перенапрвляться на страницу админа
-
+      navigate("/admin")
     })
   };
   return (
