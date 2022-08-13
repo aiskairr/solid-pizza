@@ -72,7 +72,7 @@ function HomePage({ addToBasket, drinks, pizzas }) {
       <div className="cards_wrapper">
         {drinks.map((drink) => (
           <PizzaCard
-            key={drink.id}
+            key={"drink" + drink.id}
             img={drink.img}
             title={drink.title}
             description={drink.description}

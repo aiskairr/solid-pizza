@@ -1,5 +1,7 @@
 import { base_url } from "../../constants/constants";
+import { basketActions } from "../../redux";
 import css from "./PizzaCard.module.css";
+import {useDispatch} from "react-redux"
 
 function PizzaCard({
   addToBasket,
@@ -13,6 +15,10 @@ function PizzaCard({
 }) {
   const handleClick = () => addToBasket({ title, description, price, img, id });
 
+  const dispatch = useDispatch()
+  const handleReduxClick = () => {
+    dispatch( basketActions.addToBasket() )
+  } 
   const handleDelete = () => {
     fetch(`${base_url}${link}/${id}`, {
       method: "DELETE"
@@ -39,7 +45,7 @@ function PizzaCard({
       <div className={css.footer}>
         <div className={css.price}>от {price} сом</div>
         {!isAdmin && (
-          <button onClick={handleClick} className="btn">
+          <button onClick={handleReduxClick} className="btn">
             Выброть
           </button>
         )}

@@ -1,13 +1,16 @@
 import css from "./BasketModal.module.css";
+import { useSelector } from "react-redux";
 
 function BasketModal({ opened, onBasketOpen, basket }) {
+  const test = useSelector((state) => state.basket.data);
+  console.log(test);
 
   const getSum = () => {
     const result = basket.reduce((sum, item) => {
-      return sum + Number(item.price)
-    }, 0)
-    return result
-  }
+      return sum + Number(item.price);
+    }, 0);
+    return result;
+  };
 
   return (
     <div className={`${css.wrapper} ${opened ? css.active : ""}`}>
@@ -17,9 +20,13 @@ function BasketModal({ opened, onBasketOpen, basket }) {
       <div className={css.modal}>
         {basket.length ? (
           <div>
-            <div className={css.header}>{basket.length} товар на {getSum()} сом</div>
+            <div className={css.header}>
+              {basket.length} товар на {getSum()} сом
+            </div>
             {basket.map((item) => (
-              <h3>{item.title} {item.price}</h3>
+              <h3>
+                {item.title} {item.price}
+              </h3>
             ))}
           </div>
         ) : (

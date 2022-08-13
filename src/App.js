@@ -14,7 +14,6 @@ function App() {
   const [drinks, setDrinks] = useState([]);
   const [basket, setBasket] = useState(local || []);
 
-  console.log(basket);
 
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
@@ -23,7 +22,6 @@ function App() {
   const addToBasket = (pizza) => {
     // write code here
     const isExist = basket.find((item) => item.id === pizza.id);
-    console.log(isExist);
 
     if (!isExist) {
       setBasket([...basket, pizza]);
@@ -39,7 +37,6 @@ function App() {
     ]).then((res) => {
       console.log(res);
       Promise.all(res.map((item) => item.json())).then((data) => {
-        console.log(data);
         setLoading(false);
         setPizzas(data[0]);
         setDrinks(data[1]);
