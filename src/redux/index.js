@@ -1,42 +1,42 @@
-import { configureStore, createSlice, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { BasketREducer } from "./ReduxComponents/BasketSlice";
+import { PizzaREducer } from "./ReduxComponents/PizzaCard";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { testREducer } from "./ReduxComponents/TestSlice";
 
-const pizzasSlice = createSlice({
-  name: "pizzas",
-  initialState: {
-    data: [],
-  },
-  reducers: {
-    addPizzas: (state) => {
-      console.log(state);
-    },
-  },
-});
-
-const basketSlice = createSlice({
-  name: "basket",
-  initialState: {
-    data: [],
-  },
-  reducers: {
-    addToBasket: (state) => {
-        console.log(state);
-        state.data.push(1)
-    }
-  },
-});
-
-export const basketActions = basketSlice.actions
+const persistConfig = {
+  key: "root",
+  storage,
+};
 
 const reducers = combineReducers({
-    pizzas: pizzasSlice.reducer,
-    basket: basketSlice.reducer,
+  pizzas: PizzaREducer,
+  basket: BasketREducer,
+  test: testREducer,
 });
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export const store = configureStore({
-  reducer: reducers,
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
-window.store = store;
+export const persistor = persistStore(store);
 
-console.log(store);
-console.log(store.getState());
+window.store = store;

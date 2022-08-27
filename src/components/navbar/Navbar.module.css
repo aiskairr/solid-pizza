@@ -2,4 +2,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 5vh;
+}
+.left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+}
+.left a{
+    font-weight: 500;
+    padding: 22px 0px;
+    color: black;
+    font-size: 14px;
+    line-height: 1;
+    transition: color 0.25s ease 0s, padding 0.25s ease 0s;
+    text-decoration: none;
+}
+.right{
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
 }
