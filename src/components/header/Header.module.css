@@ -1,0 +1,27 @@
+.continer{
+    display: flex;
+    justify-content: space-between;
+    height: 15vh;
+    align-items: center;
+}
+.continer img{
+    width: 200px;
+}
+h3{
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    line-height: 1.2;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+p{
+    color: rgb(0, 0, 0);
+    line-height: 1.2;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+#phone{
+    color: rgb(153, 153, 153);
+    font-size: 15px;
+    line-height: 1;
+}

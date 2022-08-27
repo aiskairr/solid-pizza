@@ -23,20 +23,27 @@
     margin: 8px 0;
 }
 
-.description {
+.description p{
+    height: 8vh;
+    margin-top: 10px;
+    margin: 0px;
+    width: 100%;
     font-size: 14px;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
     line-height: 20px;
+    font-family: "Roboto",sans-serif;
     color: rgb(92, 99, 112);
+    font-weight: 400;
 }
 .footer {
+    margin-top: 16px;
+    width: 100%;
+}
+.align{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 16px;
+    height: 10vh;
 }
-
 .price {
     font-size: 18px;
     font-weight: 500;

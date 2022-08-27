@@ -1,0 +1,27 @@
+.container #p{
+    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+.card2{
+    background-color: rgb(203, 203, 203);
+}
+.card2{
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+    width: 80% !important;
+    background: rgb(255, 255, 255);
+    transition: box-shadow 150ms ease-out 0s;
+    box-shadow: rgba(8, 7, 52, 0.15) 0px 4px 22px -6px;
+    border-radius: 12px;
+    display: flex;
+    flex: 0 0 auto;
+    cursor: pointer;
+    width: 260px;
+    padding: 16px;
+    margin-right: 24px;
+}
+.card2 img{
+    width: 20%;
+}

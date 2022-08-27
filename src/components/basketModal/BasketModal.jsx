@@ -1,9 +1,10 @@
 import css from "./BasketModal.module.css";
-import { useSelector } from "react-redux";
+import {  useDispatch } from "react-redux";
+import { basketActions } from "../../redux/ReduxComponents/BasketSlice";
 
-function BasketModal({ opened, onBasketOpen, basket }) {
-  const test = useSelector((state) => state.basket.data);
-  console.log(test);
+function BasketModal({     opened, onBasketOpen, basket }) {
+
+
 
   const getSum = () => {
     const result = basket.reduce((sum, item) => {
@@ -12,6 +13,13 @@ function BasketModal({ opened, onBasketOpen, basket }) {
     return result;
   };
 
+  const dispath = useDispatch();
+
+  const BasketDelete = () => {
+    const DeleteBasket = basketActions.RemoveToBasket({});
+    dispath(DeleteBasket);
+    console.log(DeleteBasket);
+  };
   return (
     <div className={`${css.wrapper} ${opened ? css.active : ""}`}>
       <div onClick={onBasketOpen} className={css.darkBlock}>
@@ -21,12 +29,20 @@ function BasketModal({ opened, onBasketOpen, basket }) {
         {basket.length ? (
           <div>
             <div className={css.header}>
-              {basket.length} товар на {getSum()} сом
+              {basket.length} товарa на {getSum()} сом
             </div>
             {basket.map((item) => (
-              <h3>
-                {item.title} {item.price}
-              </h3>
+              <div className={css.imgmodal}>
+                <img src={item.img} alt="pizza  " />
+                <h3>
+                  {item.name} {item.price}
+                </h3>
+                <button
+                  onClick={() => BasketDelete((todo) => todo.id !== item.id)}
+                >
+                  X
+                </button>
+              </div>
             ))}
           </div>
         ) : (
